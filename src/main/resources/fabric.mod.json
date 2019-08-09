@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "ctmapping",
+  "version": "${version}",
+
+  "name": "Creative Tab Keymapping",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "i509"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.i509.fabric.creativetabkeymap.CTMappingMod"
+    ]
+  },
+  "mixins": [
+		"ctbind.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
