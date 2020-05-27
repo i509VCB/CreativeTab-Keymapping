@@ -39,22 +39,22 @@ import me.i509.fabric.creativekeybinds.CreativeKeybindsMod;
 
 @Mixin(CreativeInventoryScreen.class)
 public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScreen<CreativeInventoryScreen.CreativeContainer> implements CreativeGuiExtensions {
-    private CreativeInventoryScreenMixin() {
-        super(null, null, null);
-    }
+	private CreativeInventoryScreenMixin() {
+		super(null, null, null);
+	}
 
-    @Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true)
-    private void handleKeyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
-        if (CreativeKeybindsMod.CREATIVE_TAB_PG_LEFT.wasPressed()) {
-            if (this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.PREVIOUS) && this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.PREVIOUS)) {
-                this.fabric_previousPage();
-                cir.setReturnValue(true);
-            }
-        } else if (CreativeKeybindsMod.CREATIVE_TAB_PG_RIGHT.wasPressed()) {
-            if (this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.NEXT) && this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.NEXT)) {
-                this.fabric_nextPage();
-                cir.setReturnValue(true);
-            }
-        }
-    }
+	@Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true)
+	private void handleKeyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
+		if (CreativeKeybindsMod.CREATIVE_TAB_PG_LEFT.matchesKey(keyCode, scanCode)) {
+			if (this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.PREVIOUS) && this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.PREVIOUS)) {
+				this.fabric_previousPage();
+				cir.setReturnValue(true);
+			}
+		} else if (CreativeKeybindsMod.CREATIVE_TAB_PG_RIGHT.matchesKey(keyCode, scanCode)) {
+			if (this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.NEXT) && this.fabric_isButtonEnabled(FabricCreativeGuiComponents.Type.NEXT)) {
+				this.fabric_nextPage();
+				cir.setReturnValue(true);
+			}
+		}
+	}
 }

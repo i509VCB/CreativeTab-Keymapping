@@ -31,10 +31,14 @@ import net.minecraft.util.Identifier;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.FabricKeyBinding;
+import net.fabricmc.fabric.api.client.keybinding.KeyBindingRegistry;
 
 public final class CreativeKeybindsMod implements ClientModInitializer {
+	private static final boolean KEYBIND_CATEGORY = KeyBindingRegistry.INSTANCE.addCategory("Creative Keybindings");
 	public static final FabricKeyBinding CREATIVE_TAB_PG_LEFT = FabricKeyBinding.Builder.create(new Identifier("creativekeybinds", "page_left"), Type.KEYSYM, GLFW.GLFW_KEY_LEFT, "Creative Keybindings").build();
 	public static final FabricKeyBinding CREATIVE_TAB_PG_RIGHT = FabricKeyBinding.Builder.create(new Identifier("creativekeybinds", "page_right"), Type.KEYSYM, GLFW.GLFW_KEY_RIGHT, "Creative Keybindings").build();
+	private static final boolean TAB_LEFT = KeyBindingRegistry.INSTANCE.register(CREATIVE_TAB_PG_LEFT);
+	private static final boolean TAB_RIGHT = KeyBindingRegistry.INSTANCE.register(CREATIVE_TAB_PG_RIGHT);
 
 	@Override
 	public void onInitializeClient() {
