@@ -1,9 +1,9 @@
 {
   "required": true,
-  "package": "me.i509.fabric.creativetabkeymap.mixin",
+  "package": "me.i509.fabric.creativekeybinds.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-	"MixinAbstractContainerScreen"
+  "client": [
+    "CreativeInventoryScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
